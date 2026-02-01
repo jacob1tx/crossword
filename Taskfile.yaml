@@ -1,0 +1,23 @@
+---
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  go-lint:
+    desc: Lint go files
+    cmds:
+      - golangci-lint run ./...
+
+  yaml-lint:
+    desc: Lint yaml files
+    cmds:
+      - yamllint .
+
+  lint:
+    desc: Lint all files
+    cmds:
+      - task: yaml-lint
+      - task: go-lint
+  
